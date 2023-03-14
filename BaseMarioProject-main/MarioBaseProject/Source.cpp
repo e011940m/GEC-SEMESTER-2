@@ -8,8 +8,9 @@
 #include "constants.h"
 #include <iostream>
 
-#include "Texture2d.h"
+#include "Texture2D.h"
 #include "Commons.h"
+#include "GameScreenManager.h"
 
 using namespace std;
 
@@ -17,7 +18,9 @@ using namespace std;
 SDL_Window* g_window = nullptr;
 SDL_Renderer* g_renderer = nullptr;
 //SDL_Texture* g_texture = nullptr;
-Texture2D* g_texture = nullptr;
+//Texture2D* g_texture = nullptr;
+GameScreenManager* game_screen_manager;
+Uint32 g_old_time;
 
 //Function prototypes
 bool Update();
@@ -32,6 +35,10 @@ int main(int argc, char* args[])
 {
 	if (InitSDL())
 	{
+		game_screen_manager = new GameScreenManager(g_renderer, SCREEN_LEVEL1);
+		//set the time
+		g_old_time = SDL_GetTicks();
+
 		bool quit = false; //flag to check if we wish to quit
 
 			while (!quit) //game loop
@@ -46,6 +53,8 @@ int main(int argc, char* args[])
 
 bool Update()
 {
+	Uint32 new_time = SDL_GetTicks();
+
 	//CloseSDL();
 
 	SDL_Event e;		//event handler
@@ -57,6 +66,10 @@ bool Update()
 		return true;
 		break;
 	}
+
+	game_screen_manager->Update((float)(new_time - g_old_time) / 1000.0f, e);
+	g_old_time = new_time;
+
 	return false;
 }
 
@@ -103,18 +116,22 @@ bool InitSDL()
 	}
 
 	//Load the background texture
-	g_texture = LoadTextureFromFile("Images/test.bmp");
-	if (g_texture == nullptr)
+	//g_texture = new Texture2D(g_renderer); 
+	//if (!g_texture->LoadFromFile("Images/test.bmp"))
 	{
 		return false;
 	}
 	return true;
 }
 
-/*
+
 void CloseSDL()
 {
-	//clear texture
+	//destroy the game screen manager
+	delete game_screen_manager;
+	game_screen_manager = nullptr;
+
+/*	//clear texture
 	FreeTexture();
 	//release the renderer
 	SDL_DestroyRenderer(g_renderer);
@@ -127,8 +144,10 @@ void CloseSDL()
 	//quit SDL subsystems
 	IMG_Quit();
 	SDL_Quit();
+	*/
 }
-*/
+
+
 
 void Render()
 {
@@ -136,14 +155,12 @@ void Render()
 	SDL_SetRenderDrawColor(g_renderer, 0xFF, 0xFF, 0xFF, 0xFF);
 	SDL_RenderClear(g_renderer);
 
-	//set where to render texture
-	SDL_Rect renderLocation = { 0,0,SCREEN_WIDTH, SCREEN_HEIGHT };
-
-	//Render to screen
-	SDL_RenderCopyEx(g_renderer, g_texture, NULL, &renderLocation, 0, NULL, SDL_FLIP_NONE);
+	//g_texture->Render(Vector2D(), SDL_FLIP_NONE);
 
 	//update the screen
 	SDL_RenderPresent(g_renderer);
+
+	game_screen_manager->Render();
 
 }
 /*
