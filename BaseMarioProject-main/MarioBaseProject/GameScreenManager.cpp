@@ -9,17 +9,17 @@ class GameScreen;
 
  GameScreenManager::GameScreenManager(SDL_Renderer* renderer, SCREENS startScreen)
  {
-	 m_renderer = nullptr;
+	 m_renderer = renderer;
 	 ChangeScreen(startScreen);
  }
  GameScreenManager::~GameScreenManager()
  {
 	 m_current_screen = nullptr;
+	 m_renderer = nullptr;
  }
 
  void GameScreenManager::Render()
  {
-	 m_renderer = nullptr;
 	 m_current_screen->Render();
  }
  void GameScreenManager::Update(float deltaTime, SDL_Event e)

@@ -2,9 +2,6 @@
 #include "GameScreen.h"
 #include "Commons.h"
 #include "SDL.h"
-#include "GameScreen.h"
-#include "GameScreenManager.h"
-
 class Texture2D;
 
 class GameScreenLevel1 : GameScreen

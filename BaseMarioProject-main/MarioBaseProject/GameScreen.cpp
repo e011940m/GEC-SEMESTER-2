@@ -12,7 +12,7 @@ SDL_Renderer* m_renderer = m_renderer;
 
 GameScreen::GameScreen(SDL_Renderer* renderer) 
 {
-
+	m_renderer = renderer;
 }
 GameScreen::~GameScreen() 
 {

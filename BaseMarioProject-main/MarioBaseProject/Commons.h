@@ -4,14 +4,21 @@ struct Vector2D
 {
 	float x;
 	float y;
-	float initial_x;
-	float initial_y;
 
-	Vector2D()
+	Vector2D(float initial_x, float initial_y) // Argument Constructor
 	{
 		x = initial_x;
 		y = initial_y;
-
+	}
+	Vector2D() // Default Constructor
+	{
+		x = 0;
+		y = 0;
+	}
+	Vector2D(const Vector2D& rhs) // Copy Constructor
+	{
+		x = rhs.x;
+		y = rhs.y;
 	}
 };
 
@@ -23,4 +30,10 @@ enum SCREENS
 	SCREEN_LEVEL2,
 	SCREEN_GAMEOVER,
 	SCREEN_HIGHSCORES
+};
+
+enum FACING
+{
+	FACING_LEFT,
+	FACING_RIGHT
 };

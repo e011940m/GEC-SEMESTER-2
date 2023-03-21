@@ -1,7 +1,5 @@
 //Be grateful for humble beginnings, because the next level will always require so much more of you
 
-//YOU ARE ON WEEK 3 10B
-
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_mixer.h>
@@ -11,6 +9,7 @@
 #include "Texture2D.h"
 #include "Commons.h"
 #include "GameScreenManager.h"
+#include "Character.h"
 
 using namespace std;
 
@@ -118,9 +117,9 @@ bool InitSDL()
 	//Load the background texture
 	//g_texture = new Texture2D(g_renderer); 
 	//if (!g_texture->LoadFromFile("Images/test.bmp"))
-	{
+	/*{
 		return false;
-	}
+	}*/
 	return true;
 }
 
@@ -131,8 +130,6 @@ void CloseSDL()
 	delete game_screen_manager;
 	game_screen_manager = nullptr;
 
-/*	//clear texture
-	FreeTexture();
 	//release the renderer
 	SDL_DestroyRenderer(g_renderer);
 	g_renderer = nullptr;
@@ -144,7 +141,6 @@ void CloseSDL()
 	//quit SDL subsystems
 	IMG_Quit();
 	SDL_Quit();
-	*/
 }
 
 
@@ -157,10 +153,11 @@ void Render()
 
 	//g_texture->Render(Vector2D(), SDL_FLIP_NONE);
 
+	game_screen_manager->Render();
+
 	//update the screen
 	SDL_RenderPresent(g_renderer);
 
-	game_screen_manager->Render();
 
 }
 /*
