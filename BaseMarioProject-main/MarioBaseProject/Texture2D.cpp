@@ -48,7 +48,7 @@ bool Texture2D::LoadFromFile(std::string path)
 }
 void Texture2D::Free()
 {
-	m_texture == nullptr;
+	m_texture = nullptr;
 	m_width = 0;
 	m_height = 0;
 }
