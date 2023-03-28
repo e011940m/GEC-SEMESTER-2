@@ -48,9 +48,11 @@ bool Texture2D::LoadFromFile(std::string path)
 }
 void Texture2D::Free()
 {
-	m_texture = nullptr;
 	m_width = 0;
 	m_height = 0;
+
+	SDL_DestroyTexture(m_texture);
+	m_texture = nullptr;
 }
 void Texture2D::Render(Vector2D new_position, SDL_RendererFlip flip, double angel)
 {

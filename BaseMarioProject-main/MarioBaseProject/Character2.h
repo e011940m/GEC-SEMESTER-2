@@ -8,7 +8,7 @@ using namespace std;
 
 class Texture2D;
 
-class Character
+class Character2
 {
 protected:
 	SDL_Renderer* m_renderer;
@@ -23,8 +23,8 @@ protected:
 	float m_collision_radius;
 
 public:
-	Character(SDL_Renderer* renderer, string imagePath, Vector2D start_position);
-	~Character();
+	Character2(SDL_Renderer* renderer, string imagePath, Vector2D start_position);
+	~Character2();
 
 	virtual void Render();
 	virtual void Update(float deltaTime, SDL_Event e);
@@ -32,7 +32,6 @@ public:
 	Vector2D GetPosition();
 
 	float GetCollisionRadius();
-	Rect2D GetCollisionBox();
 
 private:
 	FACING m_facing_direction;

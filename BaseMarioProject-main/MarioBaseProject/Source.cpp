@@ -114,12 +114,6 @@ bool InitSDL()
 		return false;
 	}
 
-	//Load the background texture
-	//g_texture = new Texture2D(g_renderer); 
-	//if (!g_texture->LoadFromFile("Images/test.bmp"))
-	/*{
-		return false;
-	}*/
 	return true;
 }
 
@@ -160,44 +154,3 @@ void Render()
 
 
 }
-/*
-SDL_Texture* LoadTextureFromFile(string path)
-{
-	//remove memory used for a previous texture
-	FreeTexture();
-
-	SDL_Texture* p_texture = nullptr;
-
-	//Load the Image
-	SDL_Surface* p_surface = IMG_Load(path.c_str());
-	if (p_surface != nullptr)
-	{
-		//create the texture from the pixels on the surface
-		p_texture = SDL_CreateTextureFromSurface(g_renderer, p_surface);
-		if (p_texture == nullptr)
-		{
-			cout << "Unable to create texture from surface. Error: " << SDL_GetError();
-		}
-		//remove the loaded surface now that we have a texture
-		SDL_FreeSurface(p_surface);
-	}
-	else
-	{
-		cout << "Unable to create texture from surface. Error: " << IMG_GetError();
-	}
-
-	return p_texture; //return the texture
-}
-*/
-
-/*
-void FreeTexture()
-{
-	//check if texture exist before removing it
-	if (g_texture != nullptr)
-	{
-		SDL_DestroyTexture(g_texture);
-		g_texture = nullptr;
-	}
-}
-*/

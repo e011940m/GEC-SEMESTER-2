@@ -20,6 +20,7 @@ struct Vector2D
 		x = rhs.x;
 		y = rhs.y;
 	}
+
 };
 
 enum SCREENS
@@ -36,4 +37,21 @@ enum FACING
 {
 	FACING_LEFT,
 	FACING_RIGHT
+};
+
+struct Rect2D
+{
+	float x;
+	float y;
+	float width;
+	float height;
+
+
+	Rect2D(float x_pos, float y_pos, float width, float height)
+	{
+		x = x_pos;
+		y = y_pos;
+		this->width = width;
+		this->height = height;
+	}
 };

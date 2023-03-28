@@ -1,11 +1,11 @@
-#include "Character.h"
+#include "Character2.h"
 #include "Texture2D.h"
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_mixer.h>
 
 
-Character::Character(SDL_Renderer* renderer, string imagePath, Vector2D start_position)
+Character2::Character2(SDL_Renderer* renderer, string imagePath, Vector2D start_position)
 {
 	m_renderer = renderer;
 	m_position = start_position;
@@ -20,12 +20,12 @@ Character::Character(SDL_Renderer* renderer, string imagePath, Vector2D start_po
 	m_collision_radius = 15.0f;
 }
 
-Character::~Character()
+Character2::~Character2()
 {
 	m_renderer = nullptr;
 }
 
-void Character::Render()
+void Character2::Render()
 {
 	m_texture->Render(m_position, SDL_FLIP_NONE);
 
@@ -39,7 +39,7 @@ void Character::Render()
 	}
 }
 
-void Character::Update(float deltaTime, SDL_Event e)
+void Character2::Update(float deltaTime, SDL_Event e)
 {
 	if (m_moving_left)
 	{
@@ -56,22 +56,26 @@ void Character::Update(float deltaTime, SDL_Event e)
 		switch (e.key.keysym.sym)
 		{
 			break;
-		case SDLK_LEFT:
+		case SDLK_a:
+			//m_position.x = -1;
 			m_moving_left = true;
 			break;
-		case SDLK_RIGHT:
+		case SDLK_d:
+			//m_position.x = 1;
 			m_moving_right = true;
 			break;
 		}
 		break;
 	case SDL_KEYUP:
-		switch(e.key.keysym.sym)
+		switch (e.key.keysym.sym)
 		{
 			break;
 		case SDLK_LEFT:
+			//m_position.x = -1;
 			m_moving_left = false;
 			break;
 		case SDLK_RIGHT:
+			//m_position.x = 1;
 			m_moving_right = false;
 			break;
 		}
@@ -80,33 +84,28 @@ void Character::Update(float deltaTime, SDL_Event e)
 
 }
 
-void Character::SetPosition(Vector2D new_position)
+void Character2::SetPosition(Vector2D new_position)
 {
 	m_position = new_position;
 }
 
-Vector2D Character::GetPosition()
+Vector2D Character2::GetPosition()
 {
 	return m_position;
 }
 
-void Character::MoveLeft(float deltaTime)
+void Character2::MoveLeft(float deltaTime)
 {
 	FACING_LEFT;
 	m_position.x -= 1;
 }
-void Character::MoveRight(float deltaTime)
+void Character2::MoveRight(float deltaTime)
 {
 	FACING_RIGHT;
 	m_position.x += 1;
 }
 
-float Character::GetCollisionRadius()
+float Character2::GetCollisionRadius()
 {
 	return m_collision_radius;
 }
-
-/*Rect2D GetCollisionBox()
-{ 
-	return Rect2D(m_position.x, m_position.y, m_texture->GetWidth(), m_texture->GetHeight()); 
-}*/
