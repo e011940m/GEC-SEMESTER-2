@@ -39,7 +39,7 @@ public:
 	Vector2D GetPosition();
 
 	float GetCollisionRadius();
-	Rect2D GetCollisionBox();
+	Rect2D GetCollisionBox() { return Rect2D(m_position.x, m_position.y, m_texture->GetWidth(), m_texture->GetHeight()); };
 
 private:
 	FACING m_facing_direction;

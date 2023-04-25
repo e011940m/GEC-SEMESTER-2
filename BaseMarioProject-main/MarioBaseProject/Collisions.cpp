@@ -1,7 +1,11 @@
 #include "Collisions.h"
+#include "Character.h"
+#include "Character2.h"
 
 //intitailise instance to nullptr
 Collisions* Collisions::m_instance = nullptr;
+
+
 
 Collisions::~Collisions()
 {
@@ -23,7 +27,7 @@ Collisions* Collisions::Instance()
 	return m_instance;
 }
 
-int Circle(Character* character1, Character* character2)
+bool Circle(Character* character1, Character2* character2)
 {
 	Vector2D vec = Vector2D((character1->GetPosition().x - character2->GetPosition().x), (character1->GetPosition().y - character2->GetPosition().y));
 	double distance = sqrt((vec.x * vec.x) + (vec.y * vec.y));
@@ -31,7 +35,7 @@ int Circle(Character* character1, Character* character2)
 	return distance < combined_distance;
 }
 
-int Box(Rect2D rect1, Rect2D rect2)
+bool Box(Rect2D rect1, Rect2D rect2)
 {
 	if (rect1.x + (rect1.width / 2) > rect2.x && rect1.x + (rect1.width / 2) < rect2.x + rect2.width && rect1.y + (rect1.height / 2) > rect2.y && rect1.y + (rect1.height / 2) < rect2.y + rect2.height)
 	{

@@ -4,6 +4,7 @@
 #include "LevelMap.h"
 #include "SDL.h"
 class Texture2D;
+class PowBlock;
 
 class GameScreenLevel1 : GameScreen
 {
@@ -16,10 +17,13 @@ public:
 	~GameScreenLevel1();
 	void Render() override;
 	void Update(float deltaTime, SDL_Event e) override;
+
+	void UpdatePOWBlock();
 private:
 	bool SetUpLevel();
 
 	void SetLevelMap();
 
+	PowBlock* m_pow_block;
 };
 

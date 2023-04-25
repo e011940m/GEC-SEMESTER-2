@@ -12,7 +12,7 @@ public:
 	PowBlock(SDL_Renderer* renderer, LevelMap* map);
 	~PowBlock();
 	virtual void Render();
-	Rect2D GetCollisionBox() { return /*REM: something needs to go here;*/ }
+	Rect2D GetCollisionBox() { return Rect2D(m_position.x, m_position.y, m_texture->GetWidth(), m_texture->GetHeight()); }
 	virtual void TakeHit();
 	bool IsAvailable(){return m_num_hits_left > 0;}
 
