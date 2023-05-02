@@ -7,8 +7,6 @@
 
 using namespace std;
 
-class Texture2D;
-
 class Character
 {
 protected:
@@ -40,6 +38,9 @@ public:
 
 	float GetCollisionRadius();
 	Rect2D GetCollisionBox() { return Rect2D(m_position.x, m_position.y, m_texture->GetWidth(), m_texture->GetHeight()); };
+
+	bool SetAlive(bool isAlive) { isAlive = m_alive; }
+	bool GetAlive() { return m_alive; }
 
 private:
 	FACING m_facing_direction;

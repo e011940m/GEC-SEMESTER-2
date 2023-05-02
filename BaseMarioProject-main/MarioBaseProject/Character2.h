@@ -7,8 +7,6 @@
 
 using namespace std;
 
-class Texture2D;
-
 class Character2
 {
 protected:

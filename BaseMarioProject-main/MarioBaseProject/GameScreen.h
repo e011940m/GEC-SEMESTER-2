@@ -1,8 +1,11 @@
 #pragma once
+#ifndef _GameScreen_H
 #define _GameScreen_H
 
 #include <SDL.h>
 #include <string>
+#include "Commons.h"
+
 
 using namespace std;
 
@@ -20,3 +23,4 @@ public:
 	virtual void Update(float deltaTime, SDL_Event e);
 };
 
+#endif

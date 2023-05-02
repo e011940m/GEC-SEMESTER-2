@@ -1,7 +1,5 @@
 #include "Character.h"
 #include "Collisions.h"
-#include <SDL.h>
-#include <SDL_image.h>
 #include <SDL_mixer.h>
 
 
@@ -81,36 +79,7 @@ void Character::Update(float deltaTime, SDL_Event e)
 		MoveRight(deltaTime);
 	}
 
-	switch (e.type)
-	{
-	case SDL_KEYDOWN:
-		switch (e.key.keysym.sym)
-		{
-			break;
-		case SDLK_LEFT:
-			m_moving_left = true;
-			break;
-		case SDLK_RIGHT:
-			m_moving_right = true;
-			break;
-		case SDLK_UP:
-			Jump();
-			break;
-		}
-		break;
-	case SDL_KEYUP:
-		switch(e.key.keysym.sym)
-		{
-			break;
-		case SDLK_LEFT:
-			m_moving_left = false;
-			break;
-		case SDLK_RIGHT:
-			m_moving_right = false;
-			break;
-		}
-	default:;
-	}
+	
 
 }
 
@@ -163,7 +132,7 @@ float Character::GetCollisionRadius()
 	return m_collision_radius;
 }
 
-/*Rect2D GetCollisionBox()
+/*Rect2D Character::GetCollisionBox()
 { 
 	return Rect2D(m_position.x, m_position.y, m_texture->GetWidth(), m_texture->GetHeight()); 
 }

@@ -1,20 +1,10 @@
 #include "GameScreenLevel1.h"
 #include <iostream>
-#include "Texture2D.h"
-#include "SDL.h"
-#include "Commons.h"
-#include "GameScreen.h"
-#include "Character.h"
-#include "Character2.h"
-#include "Collisions.h"
-#include "PowBlock.h"
+#include "Mario.h"
+#include "Luigi.h"
 
-
-class Character;
-Character* my_character;
-
-class Character2;
-Character2* my_character2;
+Mario* my_character;
+Luigi* my_character2;
 
 GameScreenLevel1::~GameScreenLevel1() 
 {
@@ -32,6 +22,12 @@ GameScreenLevel1::~GameScreenLevel1()
 
 	delete m_pow_block;
 	m_pow_block = nullptr;
+
+	for (int i = 0; i < m_enemies.size(); i++)
+	{
+		delete m_enemies[i];
+	}
+	m_enemies.clear();
 }
 GameScreenLevel1::GameScreenLevel1(SDL_Renderer* renderer) : GameScreen(renderer)
 {
@@ -53,6 +49,8 @@ void GameScreenLevel1::Update(float deltaTime, SDL_Event e)
 	{
 		cout << "Box hit!" << endl;
 	}
+
+	UpdateEnemies(deltaTime, e);
 }
 
 void GameScreenLevel1::Render()
@@ -63,6 +61,12 @@ void GameScreenLevel1::Render()
 	my_character->Render();
 	my_character2->Render();
 	m_pow_block->Render();
+
+	//dar enemeies
+	for (int i = 0; i < m_enemies.size(); i++)
+	{
+		m_enemies[i]->Render();
+	}
 }
 
 bool GameScreenLevel1::SetUpLevel()
@@ -79,8 +83,8 @@ bool GameScreenLevel1::SetUpLevel()
 
 
 	//set up player character
-	my_character = new Character(m_renderer, "Images/Mario.png", Vector2D(64.0f, 330.0f),m_level_map);
-	my_character2 = new Character2(m_renderer, "Images/Luigi.png", Vector2D(100.0f, 330.0f), m_level_map);
+	my_character = new Mario(m_renderer, "Images/Mario.png", Vector2D(64.0f, 330.0f),m_level_map);
+	my_character2 = new Luigi(m_renderer, "Images/Luigi.png", Vector2D(100.0f, 330.0f), m_level_map);
 
 	m_pow_block = new PowBlock(m_renderer, m_level_map);
 }
@@ -112,5 +116,5 @@ void  GameScreenLevel1::SetLevelMap()
 
 void GameScreenLevel1::UpdatePOWBlock()
 {
-	//if Mario is coliding with PowBlock
+	
 }

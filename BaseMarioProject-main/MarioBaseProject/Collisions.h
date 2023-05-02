@@ -1,5 +1,6 @@
 #pragma once
-#include "Character.h"
+#include "Mario.h"
+#include "Luigi.h"
 #include "Commons.h"
 
 
@@ -10,7 +11,7 @@ public:
 
 	static Collisions* Instance();
 
-	bool Circle(Character* character1, Character* character2);
+	bool Circle(Mario* character1, Luigi* character2);
 	bool Box(Rect2D rect1, Rect2D rect2);
 
 private:

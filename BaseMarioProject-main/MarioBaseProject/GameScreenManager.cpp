@@ -1,11 +1,4 @@
 #include "GameScreenManager.h"
-#include "Commons.h"
-#include "SDL.h"
-#include "GameScreen.h"
-#include "GameScreenLevel1.h"
-#include "GameScreenManager.h"
-
-class GameScreen;
 
  GameScreenManager::GameScreenManager(SDL_Renderer* renderer, SCREENS startScreen)
  {
