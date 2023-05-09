@@ -18,6 +18,8 @@ Character::Character(SDL_Renderer* renderer, string imagePath, Vector2D start_po
 	m_collision_radius = 15.0f;
 
 	m_current_level_map = map;
+
+	m_alive = true;
 }
 
 Character::~Character()
@@ -137,3 +139,10 @@ float Character::GetCollisionRadius()
 	return Rect2D(m_position.x, m_position.y, m_texture->GetWidth(), m_texture->GetHeight()); 
 }
 */
+
+bool Character::SetAlive(bool IsAlive)
+{
+	bool isAlive = m_alive;
+	GetAlive();
+	return true;
+}

@@ -17,7 +17,7 @@ public:
 	void TakeDamage();
 	void Jump();
 
-	bool GetInjuried() { return m_injured; }
+	bool GetInjured() { return m_injured; }
 
 private:
 	float m_single_sprite_w;

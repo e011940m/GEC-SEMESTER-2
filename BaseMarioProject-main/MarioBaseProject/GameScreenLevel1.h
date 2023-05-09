@@ -11,6 +11,7 @@
 #include "Enemy.h"
 #include <vector>
 
+
 class GameScreenLevel1 : GameScreen
 {
 private:
@@ -25,6 +26,7 @@ private:
 	PowBlock* m_pow_block;
 	Mario* my_character;
 	Luigi* my_character2;
+	Enemy* my_enemy;
 
 	void UpdateEnemies(float deltaTime, SDL_Event e);
 	void CreateEnemy(Vector2D position, FACING direction, float speed);

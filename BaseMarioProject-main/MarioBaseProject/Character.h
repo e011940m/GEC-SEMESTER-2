@@ -16,6 +16,7 @@ protected:
 
 	bool m_moving_left;
 	bool m_moving_right;
+	float m_movement_speed;
 	virtual void MoveLeft(float deltaTime);
 	virtual void MoveRight(float deltaTime);
 
@@ -26,6 +27,12 @@ protected:
 	float m_jump_force;
 
 	float m_collision_radius;
+
+	FACING m_facing_direction;
+
+	LevelMap* m_current_level_map;
+
+	bool m_alive;
 
 public:
 	Character(SDL_Renderer* renderer, string imagePath, Vector2D start_position, LevelMap* map);
@@ -39,11 +46,7 @@ public:
 	float GetCollisionRadius();
 	Rect2D GetCollisionBox() { return Rect2D(m_position.x, m_position.y, m_texture->GetWidth(), m_texture->GetHeight()); };
 
-	bool SetAlive(bool isAlive) { isAlive = m_alive; }
+	bool SetAlive(bool isAlive);
 	bool GetAlive() { return m_alive; }
 
-private:
-	FACING m_facing_direction;
-
-	LevelMap* m_current_level_map;
 };

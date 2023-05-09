@@ -1,5 +1,4 @@
 #include "Enemy.h"
-#include "Character.h"
 #include "Texture2D.h"
 #include "constants.h"
 
