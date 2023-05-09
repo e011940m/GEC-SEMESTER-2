@@ -39,11 +39,11 @@ void Luigi::Update(float deltaTime, SDL_Event e)
 		switch (e.key.keysym.sym)
 		{
 			break;
-		case SDLK_LEFT:
+		case SDLK_a:
 			//m_position.x = -1;
 			m_moving_left = false;
 			break;
-		case SDLK_RIGHT:
+		case SDLK_d:
 			//m_position.x = 1;
 			m_moving_right = false;
 			break;
