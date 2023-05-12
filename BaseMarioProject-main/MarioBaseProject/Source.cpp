@@ -170,7 +170,7 @@ void Render()
 
 }
 
-void LoadMusic()
+/*void LoadMusic()
 {
 	g_music = Mix_LoadMUS(path.c_str());
 	if (g_music == nullptr)
@@ -186,4 +186,4 @@ void LoadMusic()
 			Mix_PlayMusic(g_music, -1);
 		}
 	}
-}
+}*/
